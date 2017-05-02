@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/framelayout"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    >
+    <View
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="#7f000000"
+        />
+    <RelativeLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/textview_presentation"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_rope_ads"
+            android:text="急用钱?这些小伙伴也许能帮你救个急!"
+            />
+        <com.customdrawer.ListViewForAds
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/textview_presentation"
+            android:background="#ffffff"/>
+
+    </RelativeLayout>
+</FrameLayout>
