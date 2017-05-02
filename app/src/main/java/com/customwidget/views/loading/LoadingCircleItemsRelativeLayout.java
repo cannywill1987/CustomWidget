@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.views.loading;
 
 import android.app.Activity;
 import android.graphics.Canvas;
@@ -6,7 +6,8 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.widget.RelativeLayout;
 
-import com.customdrawer.Util;
+import com.customwidget.models.LoadingCircleModel;
+import com.customwidget.utils.Util;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -32,33 +33,12 @@ public class LoadingCircleItemsRelativeLayout extends RelativeLayout {
         listColor.add(Color.parseColor("#c2eae2"));
         listColor.add(Color.parseColor("#cfed80"));
         listColor.add(Color.parseColor("#c5f8ed"));
-//        int width = context.getWindowManager().getDefaultDisplay().getWidth();
-//        int height = context.getWindowManager().getDefaultDisplay().getHeight();
         int sizeColors = listColor.size();
-       /* for(int i = 0; i < total; i++) {
-            int randColor = rand.nextInt(sizeColors);
-            int randomInt = rand.nextInt(4);
-            int randColorValue = listColor.get(randColor);
-            if(randomInt == 0) { //左边
-                LoadingCircleModel loadingCircleModel = new LoadingCircleModel(0, rand.nextInt(height), randColorValue, 1000, width / 2, height / 2, (int)Utils.dp2px(getResources(), 3), (int)Utils.dp2px(getResources(), 30), this, width, height, randomInt, rand.nextInt(delay));
-                listLoadingCircleModel.add(loadingCircleModel);
-            } else if(randomInt == 1) { //上边
-                LoadingCircleModel loadingCircleModel = new LoadingCircleModel(rand.nextInt(width), 0, randColorValue, 1000, width / 2, height / 2, (int)Utils.dp2px(getResources(), 3), (int)Utils.dp2px(getResources(), 30), this, width, height, randomInt, rand.nextInt(delay));
-                listLoadingCircleModel.add(loadingCircleModel);
-            } else if(randomInt == 2) { //右边
-                LoadingCircleModel loadingCircleModel = new LoadingCircleModel(width, rand.nextInt(height), randColorValue, 1000, width / 2, height / 2, (int)Utils.dp2px(getResources(), 3), (int)Utils.dp2px(getResources(), 30), this, width, height, randomInt, rand.nextInt(delay));
-                listLoadingCircleModel.add(loadingCircleModel);
-            } else if(randomInt == 3) { //下边
-                LoadingCircleModel loadingCircleModel = new LoadingCircleModel(rand.nextInt(width), height, randColorValue, 1000, width / 2, height / 2, (int)Utils.dp2px(getResources(), 3), (int)Utils.dp2px(getResources(), 30), this, width, height, randomInt, rand.nextInt(delay));
-                listLoadingCircleModel.add(loadingCircleModel);
-            }
-        }*/
-
         for(int i = 0; i < total; i++) {
             int randColor = rand.nextInt(sizeColors);
             int randColorValue = listColor.get(randColor);
             int randomInt = 0;
-            LoadingCircleModel loadingCircleModel = new LoadingCircleModel(0, rand.nextInt(height), randColorValue, 1000, width / 2, height / 2, (int)Util.dp2px(getResources(), 3), (int)Util.dp2px(getResources(), 30), this, width, height, randomInt, rand.nextInt(delay));
+            LoadingCircleModel loadingCircleModel = new LoadingCircleModel(0, rand.nextInt(height), randColorValue, 1000, width / 2, height / 2, (int) Util.dp2px(getResources(), 3), (int)Util.dp2px(getResources(), 30), this, width, height, randomInt, rand.nextInt(delay));
             listLoadingCircleModel.add(loadingCircleModel);
         }
         for(int i = 0; i < total; i++) {
@@ -116,7 +96,7 @@ public class LoadingCircleItemsRelativeLayout extends RelativeLayout {
         int size = listLoadingCircleModel.size();
         for (int i = 0; i < size; i ++) {
             LoadingCircleModel loadingCircleModel = listLoadingCircleModel.get(i);
-            canvas.drawCircle(loadingCircleModel.curX, loadingCircleModel.curY, loadingCircleModel.curRadius, loadingCircleModel.paint);
+            canvas.drawCircle(loadingCircleModel.getCurX(), loadingCircleModel.getCurY(), loadingCircleModel.getCurRadius(), loadingCircleModel.getPaint());
         }
     }
 

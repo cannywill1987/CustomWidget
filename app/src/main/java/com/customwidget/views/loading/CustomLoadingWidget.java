@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.views.loading;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -11,13 +11,12 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
-
 import relation.vankyshare.com.androidstudiocustomwidget.R;
 
 /**
- * Created by Administrator on 2016/6/23.
+ * 文件加载中放大镜里的控件
+ * Created by lzb on 2016/6/23.
  */
 public class CustomLoadingWidget extends RelativeLayout {
 

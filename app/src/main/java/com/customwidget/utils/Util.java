@@ -1,4 +1,4 @@
-package com.customdrawer;
+package com.customwidget.utils;
 
 import android.content.Context;
 import android.content.res.Resources;

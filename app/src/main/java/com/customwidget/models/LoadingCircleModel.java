@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.models;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -10,32 +10,32 @@ import android.view.animation.DecelerateInterpolator;
 import java.util.Random;
 
 /**
- * Created by Administrator on 2016/6/24.
+ * Created by lzb on 2016/6/24.
  */
 public class LoadingCircleModel {
-    public int x;
-    public int y;
-    public Paint paint;
-    public float time; //当前时间
-    public float delta = 0.1f;
-    public int timeTotal; //随机计算
-    public int curX;
-    public int curY;
-    int xCenter;
-    int yCenter;
-    public int radiusMin;
-    public int curRadius;
-    int radiusMax;
-    int screenWidth;
-    int screenHeight;
+    private int x;
+    private int y;
+    private Paint paint;
+    private float time; //当前时间
+    private float delta = 0.1f;
+    private int timeTotal; //随机计算
+    private int curX;
+    private int curY;
+    private int xCenter;
+    private int yCenter;
+    private int radiusMin;
+    private int curRadius;
+    private int radiusMax;
+    private int screenWidth;
+    private int screenHeight;
     private ValueAnimator mCountAnimator;
-    float percent;
-    View view;
-    int status = 0;
-    Random rand =new Random();
-    int startTimeDelay = 0;
-    int alpha = 0;
-    float alphaTarget = 0.8f;
+    private float percent;
+    private View view;
+    private int status = 0;
+    private Random rand =new Random();
+    private int startTimeDelay = 0;
+    private int alpha = 0;
+    private float alphaTarget = 0.8f;
     public LoadingCircleModel(int x, int y, int color, int timeTotal, int xCenter, int yCenter, int curRadiusMin, int radiusMax, View view, int screenWidth, int screenHeight, int status, int startTimeDelay) {
         this.x = x;
         this.y = y;
@@ -134,6 +134,16 @@ public class LoadingCircleModel {
 
     public void setyCenter(int yCenter) {
         this.yCenter = yCenter;
+    }
+
+
+
+    public int getCurRadius() {
+        return curRadius;
+    }
+
+    public void setCurRadius(int curRadius) {
+        this.curRadius = curRadius;
     }
 
     public void setXAndY() {

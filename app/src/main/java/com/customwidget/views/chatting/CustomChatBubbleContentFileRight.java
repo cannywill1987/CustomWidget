@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.views.chatting;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -14,10 +14,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.RelativeLayout;
 
-import com.customdrawer.Util;
+import com.customwidget.utils.Util;
 
 
-public class CustomChatBubbleContentFileLeft extends RelativeLayout {
+
+/**
+ * 右边的聊天文件加载中泡泡
+ */
+public class CustomChatBubbleContentFileRight extends RelativeLayout {
 
 	Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	Paint paintGradient = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -31,13 +35,15 @@ public class CustomChatBubbleContentFileLeft extends RelativeLayout {
 	private int mProgressWidth = 0;
 	private int mGradientColor = 0x30e3be;
 	private LinearGradient mLinearGradient;
-	RectF roundedRect = new RectF(mRadius-mRadius/1.4f+mRadius,
+	int mProgress;
+	
+	RectF roundedRect = new RectF(mWidth - (mWidth-mRadius),
 			mHeight - mRadius,
-			mWidth-mRadius, 
+			mWidth - (mRadius-mRadius/1.4f+mRadius), 
 			mHeight - mRadius + Util.dip2px(getContext(), 5));
 	RectF roundedRectProgress;
-	int mProgress;
-	public CustomChatBubbleContentFileLeft(Context context, AttributeSet attrs) {
+
+	public CustomChatBubbleContentFileRight(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		paint.setColor(Color.parseColor("#3499DD"));
@@ -67,7 +73,7 @@ public class CustomChatBubbleContentFileLeft extends RelativeLayout {
 		mHeight = MeasureSpec.getSize(heightMeasureSpec);
 		mHeightExtra = mHeight - 2 * mRadius;	
 
-		//		paintGradient.setColor(Color.WHITE);
+				paintGradient.setColor(Color.WHITE);
 	}
 
 	@Override
@@ -76,80 +82,74 @@ public class CustomChatBubbleContentFileLeft extends RelativeLayout {
 		super.onDraw(canvas);
 		paint.setColor(Color.parseColor("#3499DD")); 
 		Path path = new Path();
-		//左边的往下45度圆弧
-		Util.arcTo(path, - mRadius/1.4f, mRadius, mRadius, -45.0f, 45.0f);
-		//左下角直线
-		path.lineTo(mRadius-mRadius/1.4f, mHeight - mRadius);
-		//左下角90度圆弧
-		Util.arcTo(path, mRadius - mRadius / 1.4f + mRadius, mHeight - mRadius, mRadius, 180, -90);
+		//右边的往下45度圆弧
+		Util.arcTo(path, mWidth + mRadius/1.4f, mRadius, mRadius, -135.0f, -45.0f);
+		//右下角直线
+		path.lineTo(mWidth - (mRadius-mRadius/1.4f), mHeight - mRadius);
+		//右下角90度圆弧
+		Util.arcTo(path, mWidth - (mRadius - mRadius / 1.4f + mRadius), mHeight - mRadius, mRadius, 0, 90);
 		//下面直线
-		path.lineTo(mWidth - mRadius, mHeight);
-		//右下角圆弧
-		Util.arcTo(path, mWidth - mRadius, mHeight - mRadius, mRadius, 90, -90);
-		//右边直线
-		path.lineTo(mWidth, mRadius);
+		path.lineTo(mRadius, mHeight);
+		//左下角圆弧
+		Util.arcTo(path, mRadius, mHeight - mRadius, mRadius, 90, 90);
+		//左边直线
+		path.lineTo(0, mRadius);
 		//右上角圆弧
-		Util.arcTo(path, mWidth - mRadius, mRadius, mRadius, 0, -90);
+		Util.arcTo(path, mRadius, mRadius, mRadius, 180, 90);
 		//上角直线
-		path.lineTo(mRadius - mRadius / 1.4f + mRadius, 0);
-		//左上角圆弧
-		Util.arcTo(path, mRadius - mRadius / 1.4f + mRadius, mRadius, mRadius, -90, -45);
+		path.lineTo(mWidth - (mRadius - mRadius / 1.4f + mRadius), 0);
+		//
+		Util.arcTo(path, mWidth - (mRadius - mRadius / 1.4f + mRadius), mRadius, mRadius, -90, 45);
 		path.close();
-		//		canvas.drawPath(path, paint);
 		canvas.clipPath(path);
 		canvas.drawPath(path, paint);
-//		canvas.drawColor(Color.parseColor("#3499DD"));
-		//		canvas.drawPath(path, paint);
 
 		paintGradient.setShader(mLinearGradient);
-		canvas.drawRect(0, 0, mProgressWidth, mHeight, paintGradient);
+		canvas.drawRect(mWidth - mProgressWidth,  0, mWidth,  mHeight, paintGradient);
 		canvas.drawRoundRect(roundedRect, Util.dip2px(getContext(), 8), Util.dip2px(getContext(), 8), mPaintProgressBarBG);
 		if(roundedRectProgress != null) {
 			canvas.drawRoundRect(roundedRectProgress, Util.dip2px(getContext(), 8), Util.dip2px(getContext(), 8), mPaintProgressBar);
 		}
-
-
-		/*		if(isRecordingType == true) {
-			Util.drawArc(2 * radius + Util.dip2px(getContext(), 3), height / 2 + radius/2, Util.dip2px(getContext(), 20), 30, -60, false, canvas, paintRecord);
-			Util.drawArc(2 * radius + Util.dip2px(getContext(), 3), height / 2 + radius/2, Util.dip2px(getContext(), 10), 30, -60, false, canvas, paintRecord);
-			Util.drawArc(2 * radius + Util.dip2px(getContext(), 3), height / 2 + radius/2, Util.dip2px(getContext(), 15), 30, -60, false, canvas, paintRecord);
-		}*/
 	}
 
 	public int getProgressWidth() {
 		return mProgressWidth;
 	}
-	
+
 	public void setProgressWithAnimation(int progress) {
 		ObjectAnimator mProgressBarAnimator;
 		mProgressBarAnimator = ObjectAnimator.ofInt(this, "Progress", this.getmProgress(), progress);
 		mProgressBarAnimator.setDuration(300);
 		mProgressBarAnimator.start();
 	}
-	
+
+	/**
+	 * setting the loading progress from 0 to 100
+	 * @param progress
+     */
 	public void setProgress(int progress) {
 		this.mProgress = progress;
-		roundedRect = new RectF(mRadius-mRadius/1.4f+mRadius,
+		roundedRect = new RectF(mWidth-(mWidth-mRadius),
 				mHeight - mRadius,
-				mWidth-mRadius, 
+				mWidth - (mRadius-mRadius/1.4f+mRadius), 
 				mHeight - mRadius + Util.dip2px(getContext(), 5));
 		Log.i("progress", "" + progress);
 		this.mProgressWidth = progress * mWidth / 100;
-		mLinearGradient = new LinearGradient(mProgressWidth - Util.dip2px(getContext(), 40), mHeight/2, mProgressWidth, mHeight/2, new int[]{ 0x00000000, 0xFF2fe2c2}, null, Shader.TileMode.CLAMP);
+		mLinearGradient = new LinearGradient( mWidth - mProgressWidth, mHeight/2, mWidth - (mProgressWidth - Util.dip2px(getContext(), 40)), mHeight/2, new int[]{ 0xFF2fe2c2, 0x00000000}, null, Shader.TileMode.CLAMP);
 		if(mProgressWidth >  mRadius - mRadius / 1.4f + mRadius && mProgressWidth <= mWidth - mRadius) {
-			roundedRectProgress = new RectF(mRadius-mRadius/1.4f+mRadius,
+			roundedRectProgress = new RectF(mWidth - (mProgressWidth + mRadius / 1.4f - mRadius),
 					mHeight - mRadius,
-					mProgressWidth + mRadius / 1.4f - mRadius, 
+					mWidth - (mRadius-mRadius/1.4f+mRadius), 
 					mHeight - mRadius + Util.dip2px(getContext(), 5));
 		} else if(mProgressWidth > mWidth - mRadius){
-			roundedRectProgress = new RectF(mRadius-mRadius/1.4f+mRadius,
+			roundedRectProgress = new RectF(mWidth-(mWidth - mRadius),
 					mHeight - mRadius,
-					mWidth - mRadius, 
+					mWidth - (mRadius-mRadius/1.4f+mRadius) , 
 					mHeight - mRadius + Util.dip2px(getContext(), 5));
 		} else {
-			roundedRectProgress = new RectF(mRadius-mRadius/1.4f+mRadius,
+			roundedRectProgress = new RectF(mWidth - (mRadius-mRadius/1.4f+mRadius),
 					mHeight - mRadius,
-					mRadius-mRadius/1.4f+mRadius, 
+					mWidth - (mRadius-mRadius/1.4f+mRadius) , 
 					mHeight - mRadius + Util.dip2px(getContext(), 5));
 		}
 		invalidate();

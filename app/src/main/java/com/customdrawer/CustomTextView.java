@@ -13,6 +13,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import com.customwidget.utils.Util;
+
 
 public class CustomTextView extends View {
     private String text = "Hello World";

@@ -5,7 +5,7 @@
     android:background="#404040">
 
 
-    <com.customrope.CustomPullDownRopeRelativeLayout
+    <com.customwidget.views.rope.CustomPullDownRopeRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"/>
 
-    <com.customrope.CustomChatBubbleContentFileLeft
+    <com.customwidget.views.chatting.CustomChatBubbleContentFileLeft
         android:id="@+id/bubbleleft"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="300dp"
@@ -27,7 +27,7 @@
         android:layout_height="50dp"
         />
 
-    <com.customrope.CustomChatBubbleContentFileRight
+    <com.customwidget.views.chatting.CustomChatBubbleContentFileRight
         android:id="@+id/bubbleright"
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -52,7 +52,7 @@
         android:background="#000"
         />
 
-    <com.customrope.ThreePointLoadingView
+    <com.customwidget.views.threepointloading.ThreePointLoadingView
         android:id="@+id/threepointview"
         android:layout_width="100dp"
         android:layout_gravity="center_horizontal"

@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.views.rope;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -23,12 +23,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.customdrawer.ListViewForAds;
-import com.customdrawer.Util;
+import com.customwidget.utils.Util;
 
 import java.util.ArrayList;
 
 import relation.vankyshare.com.androidstudiocustomwidget.R;
 
+/**
+ * 自定义拉绳
+ */
 public class CustomPullDownRopeRelativeLayout extends RelativeLayout implements View.OnTouchListener, View.OnClickListener{
     Paint paint;
     Paint paintPoint;

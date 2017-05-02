@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
-        <com.customrope.LoadingItemRelativeLayout
+        <com.customwidget.views.loading.LoadingItemRelativeLayout
             android:id="@+id/loading_center"
             android:layout_width="70dp"
             android:layout_height="25dp"
@@ -35,7 +35,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true">
-        <com.customrope.CirclePathImageView
+        <com.customwidget.views.loading.CirclePathImageView
             android:id="@+id/imageview_circle_path"
             android:layout_width="139dp"
             android:layout_height="139dp"

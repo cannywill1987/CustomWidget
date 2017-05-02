@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.views.threepointloading;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -9,15 +9,16 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import com.customdrawer.Util;
+import com.customwidget.models.LoadingThreePointModel;
+import com.customwidget.utils.Util;
 
 import java.util.ArrayList;
 
 
 /**
+ * loading view with three dots
  * Created by lzb on 2017/3/6.
  */
-
 public class ThreePointLoadingView extends View {
     int width;
     int height;
@@ -46,7 +47,6 @@ public class ThreePointLoadingView extends View {
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
         if (loadingThreePointModelArrayList.size() == 0) {
-//            LoadingThreePointModel(View view, float percent, int radius, int width, int decalage, int color)
             loadingThreePointModelArrayList.add(new LoadingThreePointModel(this, 0.0f, radius, width, decalge, Color.rgb(91, 203, 137)));
             loadingThreePointModelArrayList.add(new LoadingThreePointModel(this, 0.25f, radius, width, decalge, Color.rgb(104, 155, 224)));
             loadingThreePointModelArrayList.add(new LoadingThreePointModel(this, 0.5f, radius, width, decalge, Color.rgb(244, 137, 99)));
@@ -59,8 +59,7 @@ public class ThreePointLoadingView extends View {
         int size = loadingThreePointModelArrayList.size();
         for (int i = size - 1; i >= 0; i --) {
             LoadingThreePointModel loadingCircleModel = loadingThreePointModelArrayList.get(i);
-//            canvas.drawCircle(56, 15, 56, loadingCircleModel.paint);
-            canvas.drawCircle(loadingCircleModel.curX, middleHeight, loadingCircleModel.curRadius, loadingCircleModel.paint);
+            canvas.drawCircle(loadingCircleModel.getCurX(), middleHeight, loadingCircleModel.getCurRadius(), loadingCircleModel.getPaint());
         }
     }
 
@@ -73,9 +72,6 @@ public class ThreePointLoadingView extends View {
                 public void onAnimationUpdate(ValueAnimator animation) {
                     float value = (float) animation.getAnimatedValue();
                     percent = value / timeTotal;
-                    int size = loadingThreePointModelArrayList.size();
-//                for (int i = 0; i < size; i ++) {
-//                    if (i == 0)
                     LoadingThreePointModel loadingCircleModel = loadingThreePointModelArrayList.get(0);
                     loadingCircleModel.setXAndYPostInvalidate(percent);
                     float percent2 = 0.0f;
@@ -126,20 +122,12 @@ public class ThreePointLoadingView extends View {
             mCountAnimator.setInterpolator(new LinearInterpolator());
             mCountAnimator.start();
         }
-      /*  int size = loadingThreePointModelArrayList.size();
-        for (int i = 0; i < size; i ++) {
-            LoadingThreePointModel loadingCircleModel = loadingThreePointModelArrayList.get(i);
-            loadingCircleModel.startAnim();
-        }*/
     }
 
     public void stopAnim() {
         if(mCountAnimator.isRunning() == true) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mCountAnimator.cancel();
             mCountAnimator = null;
-
-//            }
         }
     }
 }

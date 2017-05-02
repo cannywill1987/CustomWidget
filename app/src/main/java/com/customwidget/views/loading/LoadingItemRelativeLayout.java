@@ -1,7 +1,6 @@
-package com.customrope;
+package com.customwidget.views.loading;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,10 +8,7 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import com.customdrawer.Util;
-
-import relation.vankyshare.com.androidstudiocustomwidget.R;
-
+import com.customwidget.utils.Util;
 
 public class LoadingItemRelativeLayout extends RelativeLayout {
     int cardBagColor = 0xffffffff;

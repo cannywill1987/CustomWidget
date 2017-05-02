@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.views.loading;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;

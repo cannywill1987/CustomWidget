@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.SeekBar;
 
-import com.customrope.CustomChatBubbleContentFileLeft;
-import com.customrope.CustomChatBubbleContentFileRight;
-import com.customrope.CustomLoadingWidget;
-import com.customrope.ThreePointLoadingView;
+import com.customwidget.views.chatting.CustomChatBubbleContentFileLeft;
+import com.customwidget.views.chatting.CustomChatBubbleContentFileRight;
+import com.customwidget.views.loading.CustomLoadingWidget;
+import com.customwidget.views.threepointloading.ThreePointLoadingView;
 
 import relation.vankyshare.com.androidstudiocustomwidget.R;
 

@@ -18,12 +18,16 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 
+import com.customwidget.utils.Util;
+
 import java.util.ArrayList;
 
 import relation.vankyshare.com.androidstudiocustomwidget.R;
 
 /**
- * Created by Administrator on 2016/5/7.
+ * 这个抽屉效果技术难点是往下拉listview的过程中listview到顶部可以不间断继续拉抽屉下去，有很多优化的地方 handler不断判断高度这个需要性能优化
+ * 属于测试版本
+ * Created by lzb on 2016/5/7.
  */
 public class CustomDrawer extends LinearLayout implements View.OnTouchListener, View.OnClickListener, ListViewForAds.OnTouchListViewListener{
     Rect rectBlock = new Rect();
@@ -76,6 +80,8 @@ public class CustomDrawer extends LinearLayout implements View.OnTouchListener, 
         heightDrawer = 0;
         mLinearLayout.setY(heightDrawer);
         addView(mView, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+
+        //抽屉最高高度
         heightToppest = (int) Util.dp2px(context.getResources(), 138);
         setOnTouchListener(this);
 

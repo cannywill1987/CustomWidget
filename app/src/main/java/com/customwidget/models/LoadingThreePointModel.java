@@ -1,4 +1,4 @@
-package com.customrope;
+package com.customwidget.models;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -6,22 +6,22 @@ import android.graphics.Paint;
 import android.view.View;
 
 /**
- * Created by Administrator on 2017/3/6.
+ * Created by lzb on 2017/3/6.
  */
 
 public class LoadingThreePointModel {
-    public View view;
-    public float percent;
-    public int curRadius;
+    private View view;
+    private float percent;
+    private int curRadius;
     private ValueAnimator mCountAnimator;
-    public int timeTotal = 10000; //随机计算
-    public int curX;
-    public int curY;
-    public int width;
-    public float time; //当前时间
-    public Paint paint;
-    public int radius;
-    public int decalage;
+    private int timeTotal = 10000; //随机计算
+    private int curX;
+    private int curY;
+    private int width;
+    private float time; //当前时间
+    private Paint paint;
+    private int radius;
+    private int decalage;
     public LoadingThreePointModel(View view, float percent, int radius, int width, int decalage, int color) {
         this.view = view;
         this.percent = percent;
@@ -34,6 +34,23 @@ public class LoadingThreePointModel {
         this.radius = radius;
         this.decalage = decalage;
         setXAndY(percent);
+    }
+
+
+    public int getCurX() {
+        return curX;
+    }
+
+    public int getCurY() {
+        return curY;
+    }
+
+    public Paint getPaint() {
+        return paint;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public float getPercent() {
@@ -92,8 +109,6 @@ public class LoadingThreePointModel {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
                 percent = value / timeTotal;
-//                if(percent < alphaTarget) alpha = (int) (255 * percent / alphaTarget);
-//                setXAndYPostInvalidate();
             }
         });
 
@@ -104,7 +119,6 @@ public class LoadingThreePointModel {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
 
             }
 
@@ -120,15 +134,12 @@ public class LoadingThreePointModel {
         });
         mCountAnimator.setRepeatCount(ValueAnimator.INFINITE);
         mCountAnimator.setDuration(timeTotal);
-//        mCountAnimator.setInterpolator(new DecelerateInterpolator());
         mCountAnimator.start();
     }
 
     public void stopAnim() {
         if(mCountAnimator.isRunning() == true) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                mCountAnimator.cancel();
-//            }
+            mCountAnimator.cancel();
         }
     }
 }
